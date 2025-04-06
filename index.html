@@ -4,13 +4,155 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AI Avatar Maker</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #2e1a47;
+      color: #f1f1f1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 1rem;
+    }
+    
+    .container {
+      text-align: center;
+      background: #432a61;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(173, 151, 234, 0.3);
+      width: 100%;
+      max-width: 500px;
+    }
+    
+    h1 {
+      margin-bottom: 1.5rem;
+      color: #c8a6ff;
+      font-size: 2rem;
+    }
+    
+    input[type="text"] {
+      width: 100%;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+      background: #533977;
+      color: #fff;
+      box-sizing: border-box;
+    }
+    
+    button {
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      background: #9d7ad2;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-bottom: 1rem;
+    }
+    
+    button:hover {
+      background: #8a68c1;
+      transform: translateY(-2px);
+    }
+    
+    button:active {
+      transform: translateY(1px);
+    }
+    
+    #loading {
+      margin: 1rem 0;
+      font-style: italic;
+      color: #c8a6ff;
+    }
+    
+    #result {
+      margin-top: 1.5rem;
+    }
+    
+    #result img {
+      margin-top: 1rem;
+      max-width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(173, 151, 234, 0.4);
+    }
+    
+    #result a {
+      display: inline-block;
+      margin-top: 1rem;
+      color: #c8a6ff;
+      text-decoration: underline;
+      font-weight: 500;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 500px) {
+      .container {
+        padding: 1.5rem;
+      }
+      
+      h1 {
+        font-size: 1.7rem;
+      }
+    }
+    
+    @media (max-width: 375px) {
+      .container {
+        padding: 1.2rem;
+      }
+      
+      h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      
+      input[type="text"] {
+        padding: 0.7rem;
+      }
+      
+      button {
+        padding: 0.7rem 1.2rem;
+      }
+    }
+    
+    @media (max-width: 320px) {
+      body {
+        padding: 0.5rem;
+      }
+      
+      .container {
+        padding: 1rem;
+      }
+      
+      h1 {
+        font-size: 1.3rem;
+      }
+      
+      input[type="text"] {
+        font-size: 0.9rem;
+      }
+      
+      button {
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>AI Avatar Maker</h1>
-  <input type="text" id="prompt" placeholder="Describe your avatar..." />
-  <button id="generate">Generate Avatar</button>
-  <div id="output"></div>
-
+  <div class="container">
+    <h1>AI Avatar Maker</h1>
+    <input type="text" id="prompt" placeholder="Describe your avatar..." />
+    <button id="generate">Generate Avatar</button>
+    <div id="loading" style="display: none;">Creating your avatar...</div>
+    <div id="result"></div>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
